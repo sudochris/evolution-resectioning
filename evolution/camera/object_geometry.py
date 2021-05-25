@@ -45,6 +45,6 @@ class ObjGeometry(BaseGeometry):
 
 
 if __name__ == '__main__':
-    obj_geometry = ObjGeometry("data/squash_court.obj")
+    obj_geometry = ObjGeometry("data/synth/squash_court.obj")
     print(f"  pts: {obj_geometry.world_points}")
     print(f"lines: {obj_geometry.connections}")
