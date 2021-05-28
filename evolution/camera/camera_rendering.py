@@ -69,9 +69,11 @@ def render_geometry_with_camera(image: np.array,
     :param line_thickness: The line's thickness
     """
     projected_points = project_geometry(geometry, camera_matrix, t_vector, r_vector, d_vector)
+    image_height, image_width = image.shape[:2]
     for p_idx in geometry.connections:
         poly_line_points = [[int(projected_points[idx][0][0]), int(projected_points[idx][0][1])] for idx in p_idx]
-        cv.polylines(image, np.array([poly_line_points]), False, line_color, line_thickness)
+        poly_line_points = np.clip(poly_line_points, (0, 0), (image_width, image_height))
+        cv.polylines(image, np.array([poly_line_points], dtype=np.int64), False, line_color, line_thickness)
 
     if with_points:
         for (x, y) in projected_points.reshape(-1, 2):

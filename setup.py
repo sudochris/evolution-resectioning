@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='evolution-resectioning',
-    version='1.2.0',
+    version='1.2.3',
     packages=find_packages(),
     url='',
     license='',
