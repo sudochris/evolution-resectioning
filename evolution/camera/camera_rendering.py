@@ -49,7 +49,8 @@ def render_geometry_with_camera(image: np.array,
                                 d_vector: np.array,
                                 line_color: Tuple,
                                 line_thickness: int = 2,
-                                with_points=False):
+                                marker_type=None,
+                                marker_size=16):
     """ Renders a geometry to an image using a pinhole camera model specified by the intrinsic and extrinsic camera
     parameters.
 
@@ -75,6 +76,6 @@ def render_geometry_with_camera(image: np.array,
         poly_line_points = np.clip(poly_line_points, (0, 0), (image_width, image_height))
         cv.polylines(image, np.array([poly_line_points], dtype=np.int64), False, line_color, line_thickness)
 
-    if with_points:
+    if marker_type:
         for (x, y) in projected_points.reshape(-1, 2):
-            cv.drawMarker(image, (int(x), int(y)), line_color, line_thickness, 16)
+            cv.drawMarker(image, (int(x), int(y)), line_color, marker_type, marker_size, line_thickness)

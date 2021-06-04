@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import numpy as np
 
 from evolution.base import DenseGeometry, PlaneGeometry
@@ -8,7 +6,7 @@ from evolution.camera import CameraGenomeParameters, CameraGenomeFactory, Camera
 import cv2 as cv
 
 
-def synthetic_target_dna(shape: Tuple[int, int]):
+def synthetic_target_dna(shape: tuple[int, int]):
     fu = max(shape) - 100
     fv = fu
     h, w = shape
@@ -45,9 +43,9 @@ if __name__ == '__main__':
     real_genome = camera_genome_factory.create(real_dna, "target_camera")
     A_real, t_real, r_real, d_real = camera_translator.translate_genome(real_genome)
 
-    render_geometry_with_camera(real_image, real_geometry, A_real, t_real, r_real, d_real, (0, 200, 0), 1, True)
-    render_geometry_with_camera(dense_image, dense_geometry, A_real, t_real, r_real, d_real, (255, 0, 0), 1, True)
-    render_geometry_with_camera(plane_image, plane_geometry, A_real, t_real, r_real, d_real, (0, 0, 255), 1, True)
+    render_geometry_with_camera(real_image, real_geometry, A_real, t_real, r_real, d_real, (0, 200, 0), 1, cv.MARKER_TILTED_CROSS)
+    render_geometry_with_camera(dense_image, dense_geometry, A_real, t_real, r_real, d_real, (255, 0, 0), 1, cv.MARKER_TILTED_CROSS)
+    render_geometry_with_camera(plane_image, plane_geometry, A_real, t_real, r_real, d_real, (0, 0, 255), 1, cv.MARKER_TILTED_CROSS)
 
     cv.imshow("real_image", real_image)
     cv.imshow("dense_image", dense_image)
