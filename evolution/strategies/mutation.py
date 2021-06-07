@@ -43,9 +43,9 @@ class BoundedDistributionBasedMutation(MutationStrategy):
                     mutation_values[idx] = np.random.normal(self.distributions[idx]["normal"]["mu"],
                                                             self.distributions[idx]["normal"]["sigma"])
                 elif "lognormal" in self.distributions[idx]:
-                    mutation_values[idx] = np.random.normal(self.distributions[idx]["lognormal"]["mu"],
-                                                            self.distributions[idx]["lognormal"]["sigma"]) \
-                                           + self.distributions[idx]["lognormal"]["offset"]
+                    mutation_values[idx] = np.random.lognormal(self.distributions[idx]["lognormal"]["mu"],
+                                                               self.distributions[idx]["lognormal"]["sigma"]) \
+                                                             + self.distributions[idx]["lognormal"]["offset"]
 
         genome.dna += mutation_values
         if self.genome_bounds is not None:
