@@ -16,7 +16,7 @@ class Strategy(ABC):
 
 class PopulateStrategy(Strategy):
     @abstractmethod
-    def populate(self, genome_factory: BaseGenomeFactory):
+    def populate(self, genome_factory: BaseGenomeFactory, start_dna: np.array):
         raise NotImplementedError
 
 

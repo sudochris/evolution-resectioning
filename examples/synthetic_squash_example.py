@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
     start_genome = camera_genome_factory.create(start_dna, "opt_camera")
 
-    population_strategy = ValueUniformPopulation(start_dna, 8)
+    population_strategy = ValueUniformPopulation(8)
     fitness_strategy = DistanceMapWithPunishment(DistanceMap.DistanceType.L2, .3)
     selection_strategy = Tournament(4)
     crossover_strategy = TwoPoint()
@@ -94,9 +94,9 @@ if __name__ == '__main__':
 
     # 4. Construct and run the optimization algorithm
     camera_algorithm = GeneticCameraAlgorithm(genome_parameters, strategy_bundle,
-                                              extracted_edge_image, fitting_geometry)
+                                              extracted_edge_image, fitting_geometry, headless=False)
 
-    result = camera_algorithm.run()
+    result = camera_algorithm.run(start_dna)
     best_genome, best_fitness = result.best_genome
 
     # =========== Present the results ================

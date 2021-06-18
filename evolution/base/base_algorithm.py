@@ -49,12 +49,12 @@ class BaseAlgorithm(ABC):
         """
         raise NotImplemented
 
-    def run(self) -> BaseResult:
+    def run(self, start_dna: np.array) -> BaseResult:
         """
         Stars and runs the algorithm. Calls all installed callbacks.
         :return:
         """
-        population = self.populate_strategy.populate(self.genome_factory)
+        population = self.populate_strategy.populate(self.genome_factory, start_dna)
 
         current_generation = 0
 

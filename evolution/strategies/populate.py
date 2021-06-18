@@ -9,7 +9,7 @@ class BoundedUniformPopulation(PopulateStrategy):
         super().__init__()
         self.population_size = population_size
 
-    def populate(self, genome_factory: BaseGenomeFactory):
+    def populate(self, genome_factory: BaseGenomeFactory, start_dna: np.array):
         lower_bounds, upper_bounds = genome_factory.genome_bounds
         return [genome_factory.create(np.random.uniform(lower_bounds, upper_bounds)) for _ in range(self.population_size)]
 
@@ -18,17 +18,16 @@ class BoundedUniformPopulation(PopulateStrategy):
 
 
 class ValueUniformPopulation(PopulateStrategy):
-    def __init__(self, value_dna, population_size: int = 16) -> None:
+    def __init__(self, population_size: int = 16) -> None:
         super().__init__()
         self.population_size = population_size
-        self._value_dna = value_dna
 
-    def populate(self, genome_factory: BaseGenomeFactory):
+    def populate(self, genome_factory: BaseGenomeFactory, start_dna: np.array):
         _random_range = np.array(
         [[-100, -100, -10, -10, -0.1, -0.1, -0.50, np.deg2rad(-1), np.deg2rad(-1), np.deg2rad(-1), -0, -0, -0, -0, -0],
          [+100, +100, +10, +10, +0.1, +0.1, +0.50, np.deg2rad(+1), np.deg2rad(+1), np.deg2rad(+1), +0, +0, +0, +0, +0]])
 
-        return [genome_factory.create(self._value_dna + np.random.uniform(_random_range[0], _random_range[1]))
+        return [genome_factory.create(start_dna + np.random.uniform(_random_range[0], _random_range[1]))
                 for _ in range(self.population_size)]
 
     def printable_identifier(self):
