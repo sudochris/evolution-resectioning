@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 
 from evolution.base import DenseGeometry, PlaneGeometry
@@ -6,7 +8,7 @@ from evolution.camera import CameraGenomeParameters, CameraGenomeFactory, Camera
 import cv2 as cv
 
 
-def synthetic_target_dna(shape: tuple[int, int]):
+def synthetic_target_dna(shape: Tuple[int, int]):
     fu = max(shape) - 100
     fv = fu
     h, w = shape

@@ -1,10 +1,12 @@
+from typing import Tuple
+
 import numpy as np
 
 from evolution.camera import ObjGeometry, render_geometry_with_camera, CameraGenomeParameters, CameraGenomeFactory, \
     CameraTranslator
 
 import cv2 as cv
-def synthetic_target_dna(shape: tuple[int, int]):
+def synthetic_target_dna(shape: Tuple[int, int]):
     fu = max(shape)
     fv = fu
     h, w = shape
