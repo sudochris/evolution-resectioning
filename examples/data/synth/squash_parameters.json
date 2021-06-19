@@ -58,27 +58,27 @@
     },
     {
       "name": "d0",
-      "bounds": {"low": 0, "high": 2},
+      "bounds": {"low": -0.5, "high": 2},
       "mutation": {"low":  -0.5, "high": 0.5, "probability":  0.01, "distribution": "uniform"}
     },
     {
       "name": "d1",
-      "bounds": {"low": 0, "high": 0},
+      "bounds": {"low": -0.5, "high": 0.5},
       "mutation": {"low":  -0.5, "high": 0.5, "probability":  0.01, "distribution": "uniform"}
     },
     {
       "name": "d2",
-      "bounds": {"low": 0, "high": 0},
+      "bounds": {"low": -0.2, "high": 0.2},
       "mutation": {"low":  -0.2, "high": 0.2, "probability":  0.01, "distribution": "uniform"}
     },
     {
       "name": "d3",
-      "bounds": {"low": 0, "high": 0},
+      "bounds": {"low": -0.1, "high": 0.1},
       "mutation": {"low":  -0.1, "high": 0.1, "probability":  0.01, "distribution": "uniform"}
     },
     {
       "name": "d4",
-      "bounds": {"low": 0, "high": 0},
+      "bounds": {"low": -3, "high": 3},
       "mutation": {"low":  -3.0, "high": 3.0, "probability":  0.01, "distribution": "uniform"}
     }
   ]

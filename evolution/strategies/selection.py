@@ -9,7 +9,7 @@ from evolution.base.base_strategies import SelectionStrategy, Population
 class RouletteWheel(SelectionStrategy):
     def select(self, population: Population, population_fitness: List[float]) -> Tuple[BaseGenome, BaseGenome]:
         pf = np.array(population_fitness)
-        pf = (pf - np.min(pf))
+        pf = (pf - np.min(pf)) + 1e-3
         return choices(population, weights=pf, k=2)
 
     def printable_identifier(self):

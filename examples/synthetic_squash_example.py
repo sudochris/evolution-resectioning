@@ -70,9 +70,9 @@ if __name__ == '__main__':
     start_dna = synthetic_target_dna(image_shape)
     random_range = np.array(
         [[-100, -100, -32, -32, -0.1, -1.0, -1.00, np.deg2rad(-20), np.deg2rad(-10), np.deg2rad(-10), -0, -0, -0, -0,
-          -0],
+          -3],
          [+100, +100, +32, +32, +0.1, +1.0, +1.00, np.deg2rad(+20), np.deg2rad(+10), np.deg2rad(+10), +0, +0, +0, +0,
-          +0]])
+          +3]])
 
     start_dna += np.random.uniform(low=random_range[0], high=random_range[1])
 
@@ -103,9 +103,12 @@ if __name__ == '__main__':
     result_image = np.zeros((image_height, image_width, 3), dtype=np.uint8)
 
     A_real, t_real, r_real, d_real = camera_translator.translate_genome(real_genome)
-
     A_start, t_start, r_start, d_start = camera_translator.translate_genome(start_genome)
     A_best, t_best, r_best, d_best = camera_translator.translate_genome(best_genome)
+
+    print(A_start, t_start, r_start, d_start)
+    print(A_real, t_real, r_real, d_real)
+    print(A_best, t_best, r_best, d_best)
 
     render_geometry_with_camera(result_image, real_geometry, A_real, t_real, r_real, d_real, (0, 200, 0), 8)
     render_geometry_with_camera(result_image, fitting_geometry, A_start, t_start, r_start, d_start, (255, 0, 0), 2)
