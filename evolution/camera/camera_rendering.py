@@ -75,7 +75,6 @@ def render_geometry_with_camera(image: np.array,
     for p_idx in geometry.connections:
         poly_line_points = [[int(projected_points[idx][0][0]), int(projected_points[idx][0][1])] for idx in p_idx]
         poly_line_points = np.clip(poly_line_points, (0, 0), (image_width, image_height))
-        print(line_type)
         cv.polylines(image, np.array([poly_line_points], dtype=np.int64), False, line_color, line_thickness, line_type)
 
     if marker_type:
