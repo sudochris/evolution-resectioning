@@ -83,7 +83,7 @@ if __name__ == '__main__':
     selection_strategy = Tournament(4)
     crossover_strategy = TwoPoint()
     mutation_strategy = BoundedUniformMutation(genome_parameters)
-    termination_strategy = NoImprovement(300)
+    termination_strategy = NoImprovement(3)
 
     strategy_bundle = StrategyBundle(population_strategy,
                                      fitness_strategy,
@@ -110,9 +110,9 @@ if __name__ == '__main__':
     print(A_real, t_real, r_real, d_real)
     print(A_best, t_best, r_best, d_best)
 
-    render_geometry_with_camera(result_image, real_geometry, A_real, t_real, r_real, d_real, (0, 200, 0), 8)
-    render_geometry_with_camera(result_image, fitting_geometry, A_start, t_start, r_start, d_start, (255, 0, 0), 2)
-    render_geometry_with_camera(result_image, fitting_geometry, A_best, t_best, r_best, d_best, (0, 0, 255), 2)
+    render_geometry_with_camera(result_image, real_geometry, A_real, t_real, r_real, d_real, (0, 200, 0), 8, line_type=cv.LINE_AA)
+    render_geometry_with_camera(result_image, fitting_geometry, A_start, t_start, r_start, d_start, (255, 0, 0), 2, line_type=cv.LINE_AA)
+    render_geometry_with_camera(result_image, fitting_geometry, A_best, t_best, r_best, d_best, (0, 0, 255), 2, line_type=cv.LINE_AA)
 
     cv.imshow("I", result_image)
     cv.waitKey(0)
